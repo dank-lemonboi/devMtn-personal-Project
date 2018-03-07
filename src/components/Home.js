@@ -7,6 +7,9 @@ export default class Home extends Component {
             <div className='home'>
             <Navbar />
             <div>Hello</div>
+            <a href={process.env.REACT_APP_LOGIN}>
+             <div id='auth_button'>Login/Register</div>
+            </a>
             </div>
         )
     }
