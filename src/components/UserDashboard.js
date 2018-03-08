@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import Navbar from './Navbar'
 
 
-export default class UserDashboard extends Component {
+class UserDashboard extends Component { 
     render() {
+        console.log(this.props)
         return(
             <div>
             <Navbar />
@@ -12,3 +13,5 @@ export default class UserDashboard extends Component {
         )
     }
 }
+
+export default UserDashboard
