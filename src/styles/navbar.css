@@ -1,13 +1,69 @@
 .navbar_parent {
+    /* position: fixed; */
+    letter-spacing: .5px;
+    text-transform: uppercase;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: #d8d4d4;
+    background: #f8e36a;
     width: 100%;
-    height: 48px;
+    height: 4em;
     padding: 0 30px;
+    box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    z-index: 99;
+}
+
+.avatar_container {
+    height: 4em;
+    width: 240px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 2em;
+    margin-right: 20px;
+    z-index: 100;    
+    background: #f8e36a;    
+}
+
+.navbar_right {
+    height: 4em;
+    width: 260px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 20px;
+    /* z-index: 100; */
+
+}
+
+.dropdownMenu {
+    margin-left: 20px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 208px;
+    height: 250px;
+    background: rgb(98, 210, 255);
+    top: -12em;
+    transition: top .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
+    /* box-sizing: border-box; */
+}
+
+
+.dropdownMenu div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 8px;
+}
+
+.slideIn {
+    top: 4em;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.3);   
 }
 
 .login_toggle { 
@@ -17,8 +73,47 @@
 }
 
 .user_avatar{
-    height: 24px;
-    width:24px;
-    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    border-radius: .2em;
     margin-right: .5em;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
 }
+
+.line_break {
+    width: 85%;
+    border: .5px solid black;
+}
+
+
+
+/* Underline From Center */
+.hvr-underline-from-center {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .hvr-underline-from-center:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background: white;
+    height: 1px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+    left: 0;
+    right: 0;
+  }

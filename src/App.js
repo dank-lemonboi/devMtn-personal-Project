@@ -3,16 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 import routes from './routes'
 import { HashRouter } from 'react-router-dom'
+import Navbar from './components/Navbar'
 
 
 class App extends Component {
   render() {
     return (
+      <HashRouter> 
       <div className="App">
-      <HashRouter>      
+       <Navbar />    
        {routes}
-      </HashRouter>     
-      </div>
+       </div>
+       </HashRouter>     
     );
   }
 }

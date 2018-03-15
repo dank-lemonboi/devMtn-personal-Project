@@ -102,4 +102,15 @@ app.get('/auth/logout', (req, res) => {
     res.redirect(200, REACT_APP_LOGOUT)
 })
 
+
+
+// --------------------- Event EndPoints ----------------------
+app.get('/events/getEvents', ( req, res ) => {
+    // console.log(req.events)
+    const db = app.get('db')
+    db.get_events().then( events => {
+      res.status(200).send(events)
+    })
+})
+
 app.listen( SERVER_PORT, () => console.log(`Server listening on port ${SERVER_PORT}...`));

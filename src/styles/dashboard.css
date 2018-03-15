@@ -1,0 +1,72 @@
+.dashboard_parent {
+}
+
+.events_container {
+    padding: 5px;
+    background: #f8e36a;
+    border: 1px solid black;
+    width: 45%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search_input {
+    margin: 20px auto;
+    height: 45px;
+    width: 30%;
+    border-radius: .4em;
+    font-size: 18px;
+    padding-left: 1em;
+    outline: none;
+}
+
+.book_image{
+    border: 1px solid burlywood;
+    height: 25%;
+    width: 25%;
+    box-shadow: 0 1px 1px black;
+}
+
+.event_inputs {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 30px;
+    border: 1px solid black;
+}
+
+.event_inputs input {
+    margin: 5px 0;
+    padding-left: 3px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.create_button {
+    margin-top: 20px;
+    border: 1px solid black;
+    color: rgb(255, 254, 254);
+    text-shadow: 0 0 1px black;
+    font-size: 14px;;
+    width: 130px;
+    height: 30px;
+    background: #f8e36a;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.8);
+    border-radius: 2px;
+}
+
+.create_button:hover {
+    cursor: pointer;
+}
+
+.create_button:active {
+    background: #bfae50;
+    color: white;
+    transform: translateY(2px);
+}

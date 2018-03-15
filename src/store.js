@@ -1,7 +1,8 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import promiseMiddleware from 'redux-promise-middleware'
-import reducer from './ducks/users'
+import userReducer from './ducks/users'
+import eventReducer from './ducks/events'
 
 const middleware = applyMiddleware(promiseMiddleware());
 
-export default createStore( reducer, middleware )
+export default createStore( combineReducers({userReducer, eventReducer}), middleware )
