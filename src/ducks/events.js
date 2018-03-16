@@ -22,9 +22,10 @@ const EVENT_DESCRIPTION = "EVENT_DESCRIPTION";
 
 const _FULFILLED = "_FULFILLED";
 
+
 export function getEvents() {
   let eventData = axios.get("http://localhost:3030/events/getevents").then(res => {
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   });
 
@@ -71,10 +72,10 @@ export function inputUrl(url) {
   }
 }
 
-export function inputBookID(bookid) {
+export function inputBookID(bookID) {
   return {
     type: EVENT_BOOK_ID,
-    payload: bookid
+    payload: bookID
   }
 }
 
@@ -86,31 +87,32 @@ export function inputDescription(description) {
 }
 
 export default function reducer(state = initialState, action) {
-    console.log(action)
+    // console.log(action)
   switch (action.type) {
-    case GET_EVENTS + _FULFILLED:
-      return Object.assign({}, state, { events: action.payload });
+
+      case GET_EVENTS + _FULFILLED:
+        return Object.assign({}, state, { events: action.payload });
 
       case EVENT_NAME:
-        return Object.assign({}, state, {eventName: action.payload});
+        return Object.assign({}, state, { eventName: action.payload });
 
       case EVENT_CITY:
-        return Object.assign({}, state, {eventCity: action.payload});
+        return Object.assign({}, state, { eventCity: action.payload });
 
       case EVENT_ZIP:
         return Object.assign({}, state, { eventZip: action.payload});
 
       case EVENT_ADDRESS:
-        return Object.assign({}, state, {eventAddress: action.payload});
+        return Object.assign({}, state, { eventAddress: action.payload });
 
       case EVENT_IMAGE:
-        return Object.assign({}, state, {eventImage: action.payload});
+        return Object.assign({}, state, { eventImage: action.payload });
 
       case EVENT_BOOK_ID:
-        return Object.assign({}, state, {eventBookId: action.payload});
+        return Object.assign({}, state, { eventBookId: action.payload });
 
       case EVENT_DESCRIPTION:
-        return Object.assign({}, state, {eventDescription: action.payload});
+        return Object.assign({}, state, { eventDescription: action.payload });
 
     default:
       return state;

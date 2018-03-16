@@ -105,6 +105,7 @@ app.get('/auth/logout', (req, res) => {
 
 
 // --------------------- Event EndPoints ----------------------
+
 app.get('/events/getEvents', ( req, res ) => {
     // console.log(req.events)
     const db = app.get('db')
@@ -112,5 +113,29 @@ app.get('/events/getEvents', ( req, res ) => {
       res.status(200).send(events)
     })
 })
+
+app.post('http://localhost:3030/api/events/createEvent', (req, res) => {
+    console.log(req.user)
+
+    const {
+        user_name,
+        user_id
+          } = req.user
+
+    const {
+        eventName,
+        eventCity,
+        eventZip,
+        eventAddress,
+        eventImage,
+        eventBookId,
+        eventDescription
+          } = req.body
+
+    const db = app.get('db')
+    db.create_event([user_id, user_name, eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription]).then( () => {
+        res.status(200).send()
+        })
+    })
 
 app.listen( SERVER_PORT, () => console.log(`Server listening on port ${SERVER_PORT}...`));
