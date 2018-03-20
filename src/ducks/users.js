@@ -12,7 +12,7 @@ const _REJECTED = '_REJECTED';
 
 export function getUser() {
     let userData = axios.get('/auth/me').then( res => {
-        console.log(res.data)
+        // console.log(res.data)
         return res.data;
     })
 

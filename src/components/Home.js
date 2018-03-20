@@ -28,10 +28,6 @@ class Home extends Component {
             <video className="home_image" loop autoPlay muted>
               <source src='http://mazwai.com/system/posts/videos/000/000/037/original/Black_Ink_--FREE_FOOTAGE--HD.mp4?1402249298' type='video/mp4'></source>
             </video>
-            <section className='eventList'>
-            {eventList}
-            </section>
-            
             
             </div>
         )

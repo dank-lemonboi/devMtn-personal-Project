@@ -114,15 +114,13 @@ app.get('/events/getEvents', ( req, res ) => {
     })
 })
 
-app.post('http://localhost:3030/api/events/createEvent', (req, res) => {
-    console.log(req.user)
+app.post('/api/events/createEvent', (req, res) => {
+    // console.log(req.body)
+    // req.user.user_id, req.user.user_name, 
 
     const {
-        user_name,
-        user_id
-          } = req.user
-
-    const {
+        userId,
+        userName,
         eventName,
         eventCity,
         eventZip,
@@ -133,8 +131,16 @@ app.post('http://localhost:3030/api/events/createEvent', (req, res) => {
           } = req.body
 
     const db = app.get('db')
-    db.create_event([user_id, user_name, eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription]).then( () => {
+        db.create_event([userId, userName, eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription]).then( () => {
         res.status(200).send()
+        })
+    })
+
+    app.delete('/api/events/deleteEvent', (req, res) => {
+        const db = app.get('db')
+        console.log(req.body.user_id)
+        db.delete_event([req.body.user_id]).then( () => {
+            res.status(200).send()
         })
     })
 

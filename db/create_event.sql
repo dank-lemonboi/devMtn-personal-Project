@@ -21,16 +21,17 @@ VALUES (
     $8,
     $9
 )
+RETURNING *;
 
 
-{
-	"event_host": "9",
-	"event_host_name": "Tayt",
-	"event_name": "asdf",
-	"event_city": "asdf",
-	"event_zip": "1234",
-	"event_address": "asdf3 234",
-	"image": "asdfasdf",
-	"book_id": "12345",
-	"event_description": "q234asdflaksdjf"
-}
+-- {
+-- 	"event_host": "9",
+-- 	"event_host_name": "Tayt",
+-- 	"event_name": "asdf",
+-- 	"event_city": "asdf",
+-- 	"event_zip": "1234",
+-- 	"event_address": "asdf3 234",
+-- 	"image": "asdfasdf",
+-- 	"book_id": "12345",
+-- 	"event_description": "q234asdflaksdjf"
+-- }

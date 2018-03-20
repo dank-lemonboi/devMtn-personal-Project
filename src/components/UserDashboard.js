@@ -10,15 +10,29 @@ class UserDashboard extends Component {
     constructor() {
         super()
 
+        this.state = {
+            id: 0
+        }
+
         this.postInputs = this.postInputs.bind(this)
+        this.deleteEvent = this.deleteEvent.bind(this)
     }
   
     componentDidMount() {
         this.props.getEvents()
     }
 
+    deleteEvent(i) {
+        console.log(i)
+        axios.delete('/api/events/deleteEvent', {data: {user_id: i} } ).then( () => {
+            console.log('Event Deleted')
+            this.props.getEvents()
+        })
+    }
+
     postInputs() {
         const {
+            user,
             eventName,
             eventCity,
             eventZip,
@@ -28,15 +42,24 @@ class UserDashboard extends Component {
             eventDescription
         } = this.props
 
-        axios.post('http://locahost:3030/api/events/createEvent', { eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription }).then( () => {
+            axios.post('http://localhost:3030/api/events/createEvent', { userId: user.user_id, userName: user.user_name, eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription }).then( () => {
             console.log('has posted')
+            this.props.getEvents()
          }
         )
+        this.refs.eventName.value = ''
+        this.refs.eventCity.value = ''
+        this.refs.eventZip.value = ''
+        this.refs.eventAddress.value = ''
+        this.refs.eventImage.value = ''
+        this.refs.eventBookId.value = ''
+        this.refs.eventDescription.value = ''
+
     }
 
     render() {
-        console.log(this.props)
-
+        // console.log(this.props)
+        
         const {
                inputName,
                inputCity,
@@ -49,12 +72,15 @@ class UserDashboard extends Component {
 
        const eventList = this.props.events.map( (event, i) => {
             return ( 
-                <div key={i} className='events_container'>
+                <div key={event.event_id} className='events_container'>
                { (event.image) ? <img className='book_image' src={event.image} /> : null}
-                <p>{event.event_name}</p>
-                <p>{event.event_host}</p>
-                <p>{event.event_description}</p>
-                <button>Edit</button>
+                  <p>{ (this.state.id !== event.event_id) ? event.event_name : <input value={event.event_name}/> }</p>
+                  <p>{event.event_host_name}</p>
+                  <p>{event.event_description}</p>
+                    <div>
+                      <button className='create_button' onClick={ () => this.setState({id: (this.state.id ? 0 : event.event_id)})}>Edit</button>
+                      <div className='create_button' onClick={ () => this.deleteEvent(event.event_id)}>Delete</div>
+                    </div>
                 </div>
             )
         })
@@ -67,35 +93,7 @@ class UserDashboard extends Component {
           //   value={ }
           //   onKeyPress={  }
           />
-
-            <section className='event_inputs'>
-            Event Name:
-              <input className='e_name'
-                     onChange={ e => inputName(e.target.value)}
-                     value={this.props.eventName}
-                     />
-            City:
-              <input className='e_city' 
-                     onChange={ e => inputCity(e.target.value)}/>
-            Zip:
-              <input className='e_zip' 
-                     onChange={ e => inputZip(e.target.value)}/>
-            Address:
-              <input className='e_address' 
-                     onChange={ e => inputAddress(e.target.value)}/>
-            Image URL:
-              <input className='e_url' 
-                     onChange={ e => inputUrl(e.target.value)}/>
-            Book ID:
-              <input className='e_book_id' 
-                     onChange={ e => inputBookID(e.target.value)}/>
-            Description:
-              <input className='e_description' 
-                     onChange={ e => inputDescription(e.target.value)}/>
-
-              <div className='create_button' onClick={this.postInputs()}>Create new Event</div>
-            </section>
-
+          
           <div className='event_list'>
            {eventList}
           </div>
@@ -107,6 +105,7 @@ class UserDashboard extends Component {
 
 let mapStateToProps = (state) => {
     return {
+      user: state.userReducer.user,
       events: state.eventReducer.events,
       eventName: state.eventReducer.eventName,
       eventCity: state.eventReducer.eventCity,
