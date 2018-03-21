@@ -47,7 +47,7 @@
     width: 208px;
     height: 250px;
     background: rgb(98, 210, 255);
-    top: -12em;
+    top: -14.5em;
     transition: top .5s cubic-bezier(0.17, 0.04, 0.03, 0.94);
     /* box-sizing: border-box; */
 }
@@ -69,7 +69,7 @@
 .login_toggle { 
     text-decoration: none !important;
     color: black;
-    cursor: pointer;
+    cursor: pointer;    
 }
 
 .user_avatar{

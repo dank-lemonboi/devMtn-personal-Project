@@ -115,7 +115,7 @@ app.get('/events/getEvents', ( req, res ) => {
 })
 
 app.post('/api/events/createEvent', (req, res) => {
-    // console.log(req.body)
+    console.log(req.body)
     // req.user.user_id, req.user.user_name, 
 
     const {

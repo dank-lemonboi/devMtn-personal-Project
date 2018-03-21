@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import '../styles/dashboard.css'
 import axios from 'axios'
 
+import Modal from './Modal.js'
+
 import { getEvents, inputName, inputCity, inputZip, inputAddress, inputUrl, inputBookID, inputDescription} from '../ducks/events'
 
 
@@ -11,11 +13,12 @@ class UserDashboard extends Component {
         super()
 
         this.state = {
-            id: 0
+            id: 0,
+            open: false
         }
 
-        this.postInputs = this.postInputs.bind(this)
         this.deleteEvent = this.deleteEvent.bind(this)
+        this.toggleModal = this.toggleModal.bind(this)
     }
   
     componentDidMount() {
@@ -30,32 +33,10 @@ class UserDashboard extends Component {
         })
     }
 
-    postInputs() {
-        const {
-            user,
-            eventName,
-            eventCity,
-            eventZip,
-            eventAddress,
-            eventImage,
-            eventBookId,
-            eventDescription
-        } = this.props
-
-            axios.post('http://localhost:3030/api/events/createEvent', { userId: user.user_id, userName: user.user_name, eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription }).then( () => {
-            console.log('has posted')
-            this.props.getEvents()
-         }
-        )
-        this.refs.eventName.value = ''
-        this.refs.eventCity.value = ''
-        this.refs.eventZip.value = ''
-        this.refs.eventAddress.value = ''
-        this.refs.eventImage.value = ''
-        this.refs.eventBookId.value = ''
-        this.refs.eventDescription.value = ''
-
+   toggleModal() {
+        this.setState({open: !this.state.open})
     }
+
 
     render() {
         // console.log(this.props)
@@ -93,7 +74,11 @@ class UserDashboard extends Component {
           //   value={ }
           //   onKeyPress={  }
           />
-          
+
+          <Modal
+            toggleModal={this.toggleModal}
+            open={this.state.open}
+          />
           <div className='event_list'>
            {eventList}
           </div>
