@@ -24,7 +24,7 @@ const _FULFILLED = "_FULFILLED";
 
 
 export function getEvents() {
-  let eventData = axios.get("http://localhost:3030/events/getevents").then(res => {
+  let eventData = axios.get(process.env.REACT_APP_GET_EVENTS).then(res => {
     // console.log(res.data);
     return res.data;
   });

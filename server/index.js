@@ -107,7 +107,7 @@ app.get('/auth/logout', (req, res) => {
 
 // --------------------- Event EndPoints ----------------------
 
-app.get('/events/getEvents', ( req, res ) => {
+app.get('/api/events/getEvents', ( req, res ) => {
     // console.log(req.events)
     const db = app.get('db')
     db.get_events().then( events => {
