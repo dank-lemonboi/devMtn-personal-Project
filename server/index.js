@@ -8,7 +8,9 @@ const express = require('express'),
       checkForSession = require('./middlewares/checkForSession'),
       cors = require('cors')
 
-
+      const app = express();
+      app.use(express.static(  `${__dirname}/../build`  ));
+      
       const {
           SERVER_PORT,
           CONNECTION_STRING,
@@ -18,9 +20,8 @@ const express = require('express'),
           CLIENT_SECRET,
           CALLBACK_URL,
           REACT_APP_LOGOUT
-      } = process.env
-
-const app = express();
+        } = process.env
+        
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -80,8 +81,8 @@ passport.deserializeUser( ( user_id, done ) => {
 
 app.get('/auth', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/userdashboard',
-    failureRedirect: 'http://localhost:3000/'
+    successRedirect: process.env.REACT_APP_SUCCESS,
+    failureRedirect: process.env.REACT_APP_FAILURE
 }))
 
 
@@ -143,5 +144,6 @@ app.post('/api/events/createEvent', (req, res) => {
             res.status(200).send()
         })
     })
+
 
 app.listen( SERVER_PORT, () => console.log(`Server listening on port ${SERVER_PORT}...`));

@@ -27,7 +27,8 @@ class NewEvent extends Component {
             eventBookId,
             eventDescription
         } = this.props
-console.log(this.props)
+
+            console.log(this.props)
             axios.post('http://localhost:3030/api/events/createEvent', { userId: user.user_id, userName: user.user_name, eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription }).then( () => {
            
             // console.log('has posted')
@@ -82,6 +83,8 @@ console.log(this.props)
                      />
             Image URL:
               <input className='e_url' 
+                     type='url'
+                     placeholder='Paste URL here'
                      onChange={ e => inputUrl(e.target.value)}
                      ref = 'eventImage'
                      />

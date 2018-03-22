@@ -1,7 +1,16 @@
 .home_image {
     width: 100%;
-    height: auto;
-    position: absolute;
-    top: 66px;
-    z-index: 5;
+    height: 100vh;
+    /* vertical-align: middle; */
+    box-sizing: border-box;
+    /* position: absolute; */
+    /* top: 57px; */
+    /* z-index: 5; */
+}
+
+.event_list {
+    height: 30em;
+    width: 100% ;
+    display: flex;
+    flex-wrap: wrap;
 }

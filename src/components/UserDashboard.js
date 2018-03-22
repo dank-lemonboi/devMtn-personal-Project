@@ -19,6 +19,7 @@ class UserDashboard extends Component {
 
         this.deleteEvent = this.deleteEvent.bind(this)
         this.toggleModal = this.toggleModal.bind(this)
+        this.findBookList = this.findBookList.bind(this)
     }
   
     componentDidMount() {
@@ -37,6 +38,16 @@ class UserDashboard extends Component {
         this.setState({open: !this.state.open})
     }
 
+    findBookList() {
+        const {
+            GOODREADS_API_KEY,
+            GOODREADS_API_SECRET
+        } = process.env
+
+        axios.get('https://www.goodreads.com/search.xml?key=eS3lZHvaNUnZDWtQmHydBA&q=Ender%27s+Game').then( res => {
+            console.log(res)
+        });
+    }
 
     render() {
         // console.log(this.props)
@@ -51,10 +62,10 @@ class UserDashboard extends Component {
                inputDescription
                } = this.props
 
-       const eventList = this.props.events.map( (event, i) => {
-            return ( 
+            const eventList = this.props.events.map( (event, i) => {
+              return ( 
                 <div key={event.event_id} className='events_container'>
-               { (event.image) ? <img className='book_image' src={event.image} /> : null}
+                  { (event.image) ? <img className='book_image' src={event.image} /> : null}
                   <p>{ (this.state.id !== event.event_id) ? event.event_name : <input value={event.event_name}/> }</p>
                   <p>{event.event_host_name}</p>
                   <p>{event.event_description}</p>
@@ -79,9 +90,13 @@ class UserDashboard extends Component {
             toggleModal={this.toggleModal}
             open={this.state.open}
           />
+
+          
           <div className='event_list'>
            {eventList}
           </div>
+
+          {/* <button onClick={this.findBookList}>Get books</button> */}
          
             </div>
         )

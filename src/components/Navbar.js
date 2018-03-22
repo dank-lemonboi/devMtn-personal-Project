@@ -40,6 +40,7 @@ class Navbar extends Component {
      }
     
     render() {
+        console.log(user)
         const { user } = this.props
         return( 
             <div style = {{zIndex: 99}}>

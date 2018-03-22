@@ -1,5 +1,24 @@
+.header_container {
+    margin: 20px auto;
+    width: 20em;
+    display: flex;
+    text-align: center;
+    text-decoration: underline;
+}
+
 .edit_parent {
     width: 400px;
-    margin: 0 auto;
+    margin: 2em auto;
     /* margin-top: 25%; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
+.edit_parent input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    padding: 0 4px;
+}
+
