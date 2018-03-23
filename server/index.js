@@ -25,6 +25,20 @@ const express = require('express'),
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use((req, res, next) => {
+    res.set({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '/',
+      'Access-Control-Allow-Methods': 'OPTIONS, GET, POST',
+      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+      'Access-Control-Allow-Credentials': true,
+      'X-XSS-Protection': '1; mode=block',
+      'X-Frame-Options': 'SAMEORIGIN',
+      'Content-Security-Policy': "default-src 'self' unsafe-inline devmountain.github.io"
+    })
+    next();
+   });
+
 // app.use(checkForSession);
 
 
