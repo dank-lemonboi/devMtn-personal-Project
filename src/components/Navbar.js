@@ -45,7 +45,7 @@ class Navbar extends Component {
         return( 
             <div style = {{zIndex: 99}}>
             <div className='navbar_parent'>
-            Navbar
+            <i class="fas fa-book"></i>
             
               <div className='login_toggle' onClick={ !user.user_name ? this.login : null }>
                 {
@@ -69,8 +69,8 @@ class Navbar extends Component {
                    <div className='avatar_container' onClick={ () => this.setState({ slideIn: !this.state.slideIn })}>
                    <img className='user_avatar' src={user.user_image} alt="image"/>
 
-                   {user.user_name} V
-                   
+                   {user.user_name} 
+                   <i class="fas fa-angle-down"></i>
 
                    </div>
                  </div>
