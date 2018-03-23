@@ -19,7 +19,7 @@ class UserDashboard extends Component {
 
         this.deleteEvent = this.deleteEvent.bind(this)
         this.toggleModal = this.toggleModal.bind(this)
-        this.findBookList = this.findBookList.bind(this)
+        // this.findBookList = this.findBookList.bind(this)
     }
   
     componentDidMount() {
