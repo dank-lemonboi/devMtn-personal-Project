@@ -38,16 +38,16 @@ class UserDashboard extends Component {
         this.setState({open: !this.state.open})
     }
 
-    findBookList() {
-        const {
-            GOODREADS_API_KEY,
-            GOODREADS_API_SECRET
-        } = process.env
+    // findBookList() {
+    //     const {
+    //         GOODREADS_API_KEY,
+    //         GOODREADS_API_SECRET
+    //     } = process.env
 
-        axios.get('https://www.goodreads.com/search.xml?key=eS3lZHvaNUnZDWtQmHydBA&q=Ender%27s+Game').then( res => {
-            console.log(res)
-        });
-    }
+    //     axios.get('https://www.goodreads.com/search.xml?key=eS3lZHvaNUnZDWtQmHydBA&q=Ender%27s+Game').then( res => {
+    //         console.log(res)
+    //     });
+    // }
 
     render() {
         // console.log(this.props)

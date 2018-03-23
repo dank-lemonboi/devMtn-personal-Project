@@ -28,8 +28,8 @@ class NewEvent extends Component {
             eventDescription
         } = this.props
 
-            console.log(this.props)
-            axios.post('http://localhost:3030/api/events/createEvent', { userId: user.user_id, userName: user.user_name, eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription }).then( () => {
+            // console.log(this.props)
+            axios.post(process.env.REACT_APP_CREATE_EVENT, { userId: user.user_id, userName: user.user_name, eventName, eventCity, eventZip, eventAddress, eventImage, eventBookId, eventDescription }).then( () => {
            
             // console.log('has posted')
             this.props.toggleModal()
