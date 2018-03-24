@@ -69,7 +69,7 @@ class Navbar extends Component {
                    <div className='avatar_container' onClick={ () => this.setState({ slideIn: !this.state.slideIn })}>
                    <img className='user_avatar' src={user.user_image} alt="image"/>
 
-                   {user.user_name} 
+                   {user.user_name } 
                    <i class="fas fa-angle-down"></i>
 
                    </div>
